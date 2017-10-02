@@ -6,9 +6,11 @@ ECE 09342-2
 
 //MSP430FR2311 Timer B Blink
 //Doesn't see timer A so used Timer B
+//Extra: Uses config.h file
 
 
 #include <msp430.h>
+#include "config.h"
 
 
 double toTicks(double); //converts a frequency in Hz to ticks used in ccr register
@@ -30,12 +32,12 @@ void main(void) {
 
 
     //Enables port 1.0 as output
-    P1DIR = BIT0;
+    REDLEDP = REDLED;
     //Enables port 2.0 as output
-    P2DIR = BIT0;
+    GREENLEDP = GREENLED;
 
 
-	//TB0CTL = Timer B0 Control
+    //TB0CTL = Timer B0 Control
     //TBSSEL_1 Timer_B clock source select = 01 ACLK 32k
     //MC_1 Up Mode
     TB0CTL=TBSSEL_1+MC_1; //UP MODE
@@ -57,9 +59,9 @@ void main(void) {
 __interrupt void Timer_B(void) //double __
 {
 
-       P1OUT^=0x01;
+       REDLEDO^=REDLED;
 
-       P2OUT^=0x01;
+       GREENLEDO^=GREENLED;
 
 
 }
