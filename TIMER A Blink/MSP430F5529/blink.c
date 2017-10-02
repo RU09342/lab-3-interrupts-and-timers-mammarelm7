@@ -8,6 +8,7 @@ ECE 09342-2
 
 
 #include <msp430.h>
+#include "config.h"
 
 double toTicks(double); //converts frequency to ticks for ccr
 
@@ -24,9 +25,9 @@ void main(void)
 
 
 	//Enables port 1.0 as output, has to use = to initialize
-	P1DIR = BIT0;
+	REDLEDP = REDLED;
 
-	P4DIR = BIT7;//Enables P4.7 output
+	GREENLEDP = GREENLED;//Enables P4.7 output
 
 	//TA0CTL = Timer A0 Control
 	//TASSEL_1 Timer_A clock source select = 01 ACLK 32k
@@ -50,8 +51,8 @@ void main(void)
 __interrupt void TimerA(void) //double __
 {
 
-    P1OUT^=BIT0;
-    P4OUT^=BIT7;
+    REDLEDP^=REDLED;
+    GREENLEDP^=GREENLED;
 
 }
 
