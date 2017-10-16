@@ -1,6 +1,8 @@
 # Lab 3: Button Interrupt
 changes speed of blinking led based on button press, uses interrupts
-slow = 1 press, medium = 2 presses, fast = 3 presses, cycles back
+slow = 1 press, medium = 2 presses, fast = 3 presses, cycles back.
+The only differences between the code is the button port.
+When the button is pressed, the Port interrupt is fired. Then depending on the value in count, the led will blink a different speed based on for loop delays.
 
 ## MSP430F5529 
 Button: P1.1
