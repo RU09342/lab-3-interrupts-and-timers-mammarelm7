@@ -1,6 +1,9 @@
 # Lab 3: Button Based Delay
 Changes speed of blinking led based on how long you hold it.
 Short press = faster blinking, long press = slower blinking.
+When you press the button, the button interrupt fires. If you continue to hold it, the TA0CCR0 register is continually incremented. 
+When you release it, a final value for the TA0CCR0 is set. The TAR will then count up to the TA0CCR0 register and will fire the Timer interrupt when it reaches it.
+In this timer interrupt, the led is toggled. 
 
 ## Code Differences
 For the MSP430FR2311 you have to use Timer B since Timer A not recognized. The code for this board also works less reliably than it does for the other boards.
