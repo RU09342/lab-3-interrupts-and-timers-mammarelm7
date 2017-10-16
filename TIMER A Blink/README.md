@@ -1,5 +1,6 @@
 # Lab 3: Timer A Blink
 The speed of two leds were controlled with Timer A using interrupts. 
+When TAR counts up to TA0CCR0, the interrupt fires and the leds are toggled. 
 
 ## Code Differences
 For the MSP430FR2311 you have to use Timer B since Timer A is not recognized.
